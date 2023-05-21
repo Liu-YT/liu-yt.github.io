@@ -420,7 +420,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/02/01/MySQL%E7%B3%BB%E5%88%97-%E5%8A%A0%E9%94%81%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/12/01/%E4%B8%80%E6%AC%A1MySQL%E6%AD%BB%E9%94%81%E8%AE%B0%E5%BD%95%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -439,7 +439,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/02/01/MySQL%E7%B3%BB%E5%88%97-%E5%8A%A0%E9%94%81%E5%88%86%E6%9E%90/" itemprop="url">MySQL系列-加锁分析</a></h1>
+                <a class="post-title-link" href="/2022/12/01/%E4%B8%80%E6%AC%A1MySQL%E6%AD%BB%E9%94%81%E8%AE%B0%E5%BD%95%E5%88%86%E6%9E%90/" itemprop="url">一次MySQL死锁记录分析</a></h1>
         
 
         <div class="post-meta">
@@ -451,8 +451,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-02-01T11:15:03+08:00">
-                2023-02-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-12-01T11:15:03+08:00">
+                2022-12-01
               </time>
             
 
@@ -505,7 +505,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  23
+                  1.5k
                 </span>
               
 
@@ -521,7 +521,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  6
                 </span>
               
             </div>
@@ -544,12 +544,12 @@
       
         
           
-          前段时间在遇到修复一个历史库存设计问题时，在使用
-
-          
+          背景前段时间在压测业务库存模块的实现，发现偶有db死锁的场景，相应日志上显示是两次insert操作的时候出现的错误，故此基于业务上的操作分析相应死锁的原因。
+分析相应的业务逻辑发生在一段库存扣减的业务操作中，整体的逻辑是每次进行扣减时先查询是否已存在相应的流水记录，若存在则直接返回（相应订单已完成库
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2023/02/01/MySQL%E7%B3%BB%E5%88%97-%E5%8A%A0%E9%94%81%E5%88%86%E6%9E%90/#more" rel="contents">
+            <a class="btn" href="/2022/12/01/%E4%B8%80%E6%AC%A1MySQL%E6%AD%BB%E9%94%81%E8%AE%B0%E5%BD%95%E5%88%86%E6%9E%90/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
