@@ -1,37 +1,950 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="系统分析与设计," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="软件工程的定义应用计算机科学理论和技术以及工程管理原则和方法，按预算和进度，实现满足用户要求的软件产品的定义、开发、和维护的工程或进行研究的学科 解释导致 software crisis 本质原因、表现，述说克服软件危机的方法 软件危机(software crisis)本质原因主要是用户需求不明确、软件开发过程缺乏正确的理论指导、软件开发的规模越来越大且软件开发的复杂度越来越高，其根源为软件的大量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统分析与设计 作业1">
+<meta property="og:url" content="http://yoursite.com/2019/03/09/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E4%BD%9C%E4%B8%9A1/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="软件工程的定义应用计算机科学理论和技术以及工程管理原则和方法，按预算和进度，实现满足用户要求的软件产品的定义、开发、和维护的工程或进行研究的学科 解释导致 software crisis 本质原因、表现，述说克服软件危机的方法 软件危机(software crisis)本质原因主要是用户需求不明确、软件开发过程缺乏正确的理论指导、软件开发的规模越来越大且软件开发的复杂度越来越高，其根源为软件的大量">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-03-09T05:22:43.000Z">
+<meta property="article:modified_time" content="2019-03-09T12:12:44.729Z">
+<meta property="article:author" content="liuyt49">
+<meta property="article:tag" content="系统分析与设计">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/09/系统分析与设计-作业1/"/>
+
+
+
+
+
+  <title>系统分析与设计 作业1 | </title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?dd7561cc103d4f0d4f23d16cf9774edd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Liu-YT" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title"></span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E4%BD%9C%E4%B8%9A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">系统分析与设计 作业1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-09T13:22:43+08:00">
+                2019-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">系统分析与设计</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="软件工程的定义"><a href="#软件工程的定义" class="headerlink" title="软件工程的定义"></a>软件工程的定义</h3><p>应用计算机科学理论和技术以及工程管理原则和方法，按预算和进度，实现满足用户要求的软件产品的定义、开发、和维护的工程或进行研究的学科</p>
+<h3 id="解释导致-software-crisis-本质原因、表现，述说克服软件危机的方法"><a href="#解释导致-software-crisis-本质原因、表现，述说克服软件危机的方法" class="headerlink" title="解释导致 software crisis 本质原因、表现，述说克服软件危机的方法"></a>解释导致 software crisis 本质原因、表现，述说克服软件危机的方法</h3><ul>
+<li>软件危机(<code>software crisis</code>)<strong>本质原因</strong>主要是用户需求不明确、软件开发过程缺乏正确的理论指导、软件开发的规模越来越大且软件开发的复杂度越来越高，其根源为软件的大量需求与软件生产力效率之间的矛盾和软件系统的复杂性与软件开发方法之间的矛盾 </li>
+<li><strong>表现</strong><ul>
+<li>项目运行超出预算</li>
+<li>项目运行超出时间</li>
+<li>软件质量低落</li>
+<li>软件通常不匹配需求</li>
+<li>项目无法管理，且代码难以维护</li>
+</ul>
+</li>
+<li><strong>克服软件危机的方法</strong><ul>
+<li>正确认识计算机软件的内涵</li>
+<li>采用工程项目管理方法实施软件开发的管理（软件开发应该是一种组织良好、管理严密、协同配合的工程活动）</li>
+<li>采用成熟的软件开发技术和方法，开发和使用适当的软件工具</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件生命周期"><a href="#软件生命周期" class="headerlink" title="软件生命周期"></a>软件生命周期</h3><p>计算机软件有一个孕育、诞生、成长、成熟、衰亡的生存过程，这样的过程称为软件的生命周期(也称软件开发生命周期SDLC)。软件生命周期将软件开发过程划分为若干阶段，每个阶段有明确的任务 目标和运行机制，从而使复杂的软件开发过程能够得到适当的控制 和管理。 软件生命周期一般包括可行性分析与计划、需求分析、设计(概要 设计和详细设计)、编码实现、测试、运行与维护等活动。这些活动应当以适当的方式分配到不同的阶段去完成。</p>
+<p>软件生命周期的6个阶段：</p>
+<ul>
+<li>可行性分析与计划阶段</li>
+<li>需求分析阶段</li>
+<li>设计阶段</li>
+<li>实现阶段</li>
+<li>测试阶段</li>
+<li>运行与维护阶段 </li>
+</ul>
+<h3 id="SWEBoK-的-15-个知识域（An-Overview-of-the-SWEBOK-Guide-）"><a href="#SWEBoK-的-15-个知识域（An-Overview-of-the-SWEBOK-Guide-）" class="headerlink" title="SWEBoK 的 15 个知识域（An Overview of the SWEBOK Guide ）"></a>SWEBoK 的 15 个知识域（<a href="https://www.sebokwiki.org/wiki/An_Overview_of_the_SWEBOK_Guide">An Overview of the SWEBOK Guide</a> ）</h3><ul>
+<li><p><strong>软件要求 <code>Software Requirements</code></strong></p>
+<p>关注软件需求的启发，协商，分析，规范和验证。软件需求表达对软件产品的需求和限制，这些需求和约束有助于解决一些现实问题。</p>
+</li>
+<li><p><strong>软件设计 <code>Software Design</code></strong></p>
+<p>软件设计涵盖了设计过程和最终产品，软件设计的过程是软件工程生命周期活动，其中分析软件需求以产生软件内部结构及其行为的描述，其将作为其构造的基础。软件设计（结果）必须描述软件体系结构 - 即软件如何分解和组织成组件以及这些组件之间的接口。它还必须描述能够构建它们的详细程度的组件。</p>
+</li>
+<li><p><strong>软件构建 <code>Software Construction</code></strong></p>
+<p>软件构建是指通过结合详细设计，编码，单元测试，继承测试，调试和验证来详细创建工作软件。软件构建包括与满足其要求和设计约束的软件程序开发相关的主题，涵盖了软件构建基础、管理软件建设、建筑技术、实际考虑和软件构建工具。</p>
+</li>
+<li><p><strong>软件测试 <code>Software Testing</code></strong></p>
+<p>软件测试旨在评估产品质量并通过识别缺陷来改进产品质量的活动。软件测试涉及在有限的测试用例集上针对预期行为动态验证程序的行为。软件测试包括软件测试的基础知识、测试技术、人机界面测试与评估、与测试有关的措施和实际考虑。</p>
+</li>
+<li><p><strong>软件维护 <code>Software Maintenance</code></strong></p>
+<p>软件维护包括增强现有功能，调整软件以在新的和修改的操作环境中运行，以及纠正缺陷。软件维护包括软件维护的基础知识（维护的性质和需求，维护类别，维护成本）、软件维护中的关键问题（技术问题，管理问题，维护成本估算，软件维护测量）、 维护过程、软件维护技术（程序理解，重新设计，逆向工程，重构，软件退役）、灾难恢复技术和软件维护工具。</p>
+</li>
+<li><p><strong>软件配置管理 <code>Software Configuration Management</code></strong></p>
+<p>软件配置管理是在不同时间点识别系统配置的规则，用于系统地控制配置的改变，以及在整个软件生命周期中维持配置的完整性和可追溯性。软件配置管理涵盖SCM过程的管理、软件配置识别，控制，状态核算，审计、软件发布管理和交付;</p>
+</li>
+<li><p><strong>软件工程管理 <code>Software Engineering Management</code></strong></p>
+<p>软件工程管理涉及规划，协调，测量，报告和控制项目或程序，以确保软件的开发和维护是系统化的，规范化的和量化的。软件工程管理涵盖了启动和范围定义（确定和协商要求，可行性分析以及要求的审查和修订）、软件项目计划（过程计划，工作量估算，成本和进度，资源分配，风险分析，质量计划）、软件项目制定（计量，报告和控制;收购和供应商合同管理）、产品验收、审查和分析项目绩效、项目结束和软件管理工具。</p>
+</li>
+<li><p><strong>软件工程过程 <code>Software Engineering Process</code></strong></p>
+<p>软件工程过程关注软件生命周期过程的定义，实施，评估，测量，管理和改进，其涵盖的主题包括流程实施和变更（流程基础架构，流程实施和变更模型以及软件流程管理）、流程定义（软件生命周期模型和流程，流程定义，流程适应和流程自动化的符号）、过程评估模型和方法、测量（过程测量，产品测量，测量技术和测量结果的质量）和软件处理工具</p>
+</li>
+<li><p><strong>软件工程模型和方法 <code>Software Engineering Models and Methods</code></strong></p>
+<p>涵盖的主题包括建模、 模型类型、分析、和软件开发方法。</p>
+</li>
+<li><p><strong>软件质量 <code>Software Quality</code></strong></p>
+<p>软件质量包括软件质量的基础知识（软件工程文化，软件质量特性，软件质量的价值和成本以及软件质量改进）、软件质量管理流程（软件质量保证，验证和确认，审核和审核和实际考虑（缺陷表征，软件质量测量和软件质量工具）</p>
+</li>
+<li><p><strong>软件工程专业实践 <code>Software Engineering Professional Practice</code></strong></p>
+<p>关注软件工程师必须具备的专业，负责和道德的软件工程知识，技能和态度，涵盖专业性、道德准则、小组动态和够通技巧</p>
+</li>
+<li><p><strong>软件工程经济学 <code>Software Engineering Economics</code></strong></p>
+<p>关注的是在业务环境中做出决策，以使技术决策与组织的业务目标保持一致。涵盖的主题包括软件工程经济学的基本原理（提案，现金流量，货币时间价值，计划视野，通货膨胀，折旧，替代和退休决策）；非营利性决策（成本效益分析，优化分析）; 估计，经济风险和不确定性（估算技术，风险决策和不确定性）; 和多属性决策（价值和衡量尺度，补偿和非补偿技术）。</p>
+</li>
+<li><p><strong>计算基础 <code>Computing Foundations</code></strong></p>
+<p>提供软件工程实践所需的计算背景的基础主题。涵盖的主题包括问题解决技术，抽象，算法和复杂性，编程基础，并行和分布式计算的基础知识，计算机组织，操作系统和网络通信。</p>
+</li>
+<li><p><strong>数学基础 <code>Mathematical Foundations</code></strong></p>
+<p>提供软件工程实践所必需的数学背景的基础主题。涵盖的主题包括集合，关系和功能; 基本命题和谓词逻辑; 证明技术; 图形和树木; 离散概率; 语法和有限状态机; 和数论。</p>
+</li>
+<li><p><strong>工程基础 <code>Engineering Foundations</code></strong></p>
+<p>提供软件工程实践所必需的工程背景的基础主题。涵盖的主题包括经验方法和实验技术; 统计分析; 测量和指标; 工程设计; 仿真与建模; 和根本原因分析。</p>
+</li>
+</ul>
+<h3 id="简单解释-CMMI-的五个级别。"><a href="#简单解释-CMMI-的五个级别。" class="headerlink" title="简单解释 CMMI 的五个级别。"></a>简单解释 CMMI 的五个级别。</h3><ul>
+<li><p>Level 1 - Initial</p>
+<p><code>初始级</code>。无序，自发生产模式。管理是反应式的。</p>
+</li>
+<li><p>Level 2 - Managed</p>
+<p><code>可管理级</code>。建立了基本的项目管理过程来跟踪费用、进度和功能特性。制定了必要的过程纪律，能重复早先类似应用项目取得的成功经验。</p>
+</li>
+<li><p>Level 3 - Defined</p>
+<p><code>已定义级</code>。已将软件管理和工程两方面的过程文档化、标准化，并综合成该组织的标准软件过程。所有项目均使用经批准、剪裁的标准软件过程来开发和维护软件，软件产品的生产在整个软件过程是可见的。</p>
+</li>
+<li><p>Level 4 - Quantitatively Managed</p>
+<p><code>量化管理级</code>。分析对软件过程和产品质量的详细度量数据，对软件过程和产品都有定量的理解与控制。管理有一个作出结论的客观依据，管理能够在定量的范围内预测性能。</p>
+</li>
+<li><p>Level 5 - Optimizing</p>
+<p><code>优化管理级</code>。过程的量化反馈和先进的新思想、新技术促使过程持续不断改进。</p>
+</li>
+</ul>
+<h3 id="用自己语言简述-SWEBok-或-CMMI"><a href="#用自己语言简述-SWEBok-或-CMMI" class="headerlink" title="用自己语言简述 SWEBok 或 CMMI"></a>用自己语言简述 SWEBok 或 CMMI</h3><p>CMMI全称Capability Maturity Model Integration，是能力成熟度集成模型，是由美国国防部与卡内基-梅隆大学和美国国防工业协会共同开发和研制的，其整合传统上独立的组织功能，设定流程改进目标和优先级，为质量流程提供指导，并为评估当前流程提供参考。该架构能够用来度量你的有效性和实用性；能够找出这样的一些机会，继续改进的机会，包括在商业目标、策略还有降低项目的风险等方面。CMMI为改进一个组织的各种过程提供了一个单一的集成化框架，对于IT产业而言，其帮助IT企业对软件在工作的时候进行管理和不断的改进的，大大的帮助了企业的开发，也帮助企业增强了改进能力，从而可以帮助企业壮大。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" rel="tag"># 系统分析与设计</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/08/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%8F%91%E5%B1%95%E4%B8%8E%E7%8E%B0%E7%8A%B6/" rel="next" title="区块链发展与现状">
+                <i class="fa fa-chevron-left"></i> 区块链发展与现状
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/29/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E4%BD%9C%E4%B8%9A2/" rel="prev" title="系统分析与设计 作业2">
+                系统分析与设计 作业2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+  
+    <div class="comments" id="comments">
+      <div style="text-align:center;">
+        <button class="btn" id="load-livere" onclick="livere.load();">加载评论</button>
+      </div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MTY4MS8xODIyNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Liu-YT" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">软件工程的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E5%AF%BC%E8%87%B4-software-crisis-%E6%9C%AC%E8%B4%A8%E5%8E%9F%E5%9B%A0%E3%80%81%E8%A1%A8%E7%8E%B0%EF%BC%8C%E8%BF%B0%E8%AF%B4%E5%85%8B%E6%9C%8D%E8%BD%AF%E4%BB%B6%E5%8D%B1%E6%9C%BA%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解释导致 software crisis 本质原因、表现，述说克服软件危机的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.</span> <span class="nav-text">软件生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SWEBoK-%E7%9A%84-15-%E4%B8%AA%E7%9F%A5%E8%AF%86%E5%9F%9F%EF%BC%88An-Overview-of-the-SWEBOK-Guide-%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">SWEBoK 的 15 个知识域（An Overview of the SWEBOK Guide ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%A7%A3%E9%87%8A-CMMI-%E7%9A%84%E4%BA%94%E4%B8%AA%E7%BA%A7%E5%88%AB%E3%80%82"><span class="nav-number">5.</span> <span class="nav-text">简单解释 CMMI 的五个级别。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E8%87%AA%E5%B7%B1%E8%AF%AD%E8%A8%80%E7%AE%80%E8%BF%B0-SWEBok-%E6%88%96-CMMI"><span class="nav-number">6.</span> <span class="nav-text">用自己语言简述 SWEBok 或 CMMI</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuyt49</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+    var livere = {
+      load : function() {
+          (function(d, s) {
+          var j, e = d.getElementsByTagName(s)[0];
+          if (typeof LivereTower === 'function') { return; }
+          j = d.createElement(s);
+          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+          j.async = true;
+          e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+        $('#load-livere').remove(); ///加载后移除按钮
+      }
+    }
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

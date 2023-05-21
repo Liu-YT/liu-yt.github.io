@@ -1,37 +1,950 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="服务计算," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="私有云桌面的搭建1. 初始准备 VirtualBox，下载Oracle VirtualBox 5.X安装包，官方下载 Centos 7，官方下载 需要硬件虚拟化（AMD-V 或 Intel-VT）支持，开启教程  2. 创建CentOS 7 虚拟机 安装 详情参见本人另一篇博客VirtualBox安装Centos7虚拟机教程   网络检查 使用nmtui查看虚拟机网卡，如果只有一个网卡 关闭虚拟机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务计算 - 1 VirtualBox搭建私有云">
+<meta property="og:url" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="私有云桌面的搭建1. 初始准备 VirtualBox，下载Oracle VirtualBox 5.X安装包，官方下载 Centos 7，官方下载 需要硬件虚拟化（AMD-V 或 Intel-VT）支持，开启教程  2. 创建CentOS 7 虚拟机 安装 详情参见本人另一篇博客VirtualBox安装Centos7虚拟机教程   网络检查 使用nmtui查看虚拟机网卡，如果只有一个网卡 关闭虚拟机">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/6.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/7.png">
+<meta property="article:published_time" content="2018-11-08T06:21:20.000Z">
+<meta property="article:modified_time" content="2018-11-08T06:51:00.766Z">
+<meta property="article:author" content="liuyt49">
+<meta property="article:tag" content="服务计算">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/08/服务计算-1-VirtualBox搭建私有云/"/>
+
+
+
+
+
+  <title>服务计算 - 1 VirtualBox搭建私有云 | </title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?dd7561cc103d4f0d4f23d16cf9774edd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 7.0.0-rc1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Liu-YT" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title"></span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">服务计算 - 1 VirtualBox搭建私有云</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-08T14:21:20+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97/" itemprop="url" rel="index">
+                    <span itemprop="name">服务计算</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  821
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="私有云桌面的搭建"><a href="#私有云桌面的搭建" class="headerlink" title="私有云桌面的搭建"></a>私有云桌面的搭建</h2><h3 id="1-初始准备"><a href="#1-初始准备" class="headerlink" title="1. 初始准备"></a>1. 初始准备</h3><ul>
+<li>VirtualBox，下载Oracle VirtualBox 5.X安装包，<a href="https://www.virtualbox.org/">官方下载</a></li>
+<li>Centos 7，<a href="https://www.centos.org/download/">官方下载</a></li>
+<li>需要硬件虚拟化（AMD-V 或 Intel-VT）支持，<a href="http://www.veryhuo.com/a/view/110093.html">开启教程</a></li>
+</ul>
+<h3 id="2-创建CentOS-7-虚拟机"><a href="#2-创建CentOS-7-虚拟机" class="headerlink" title="2. 创建CentOS 7 虚拟机"></a>2. 创建CentOS 7 虚拟机</h3><ul>
+<li>安装<ul>
+<li>详情参见本人另一篇博客<a href="https://liu-yt.github.io/2018/11/08/VirtualBox%E5%AE%89%E8%A3%85Centos7%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%99%E7%A8%8B/">VirtualBox安装Centos7虚拟机教程</a></li>
+</ul>
+</li>
+<li>网络检查<ul>
+<li>使用<code>nmtui</code>查看虚拟机网卡，如果只有一个网卡<ul>
+<li>关闭虚拟机，<code>shutdown -h now</code></li>
+<li>给虚拟机添加网卡<ul>
+<li>右键虚拟机-&gt;设置-&gt;网络-&gt;网卡2, 连接方式选择<code>Host-Only</code>，网卡选择VirtualBox创建的网卡，同时需要勾选启动按钮<br><img src="/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/1.png" alt="这里写图片描述"></li>
+</ul>
+</li>
+<li>重启虚拟机</li>
+<li>成功登陆后，输入<code>nmtui</code><ul>
+<li><code>Edit a connection</code> -&gt;  <code>选择非enp0S3的网卡</code> -&gt; <code>Edit...</code> -&gt; 修改IPv4的地址和网关<br>eg:<img src="/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/2.png" alt="这里写图片描述"></li>
+</ul>
+</li>
+<li>检查是否成功连接，<code>nmcli</code><br>  <img src="/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/3.png" alt="这里写图片描述"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>复制虚拟机<ul>
+<li>当再次需要安装虚拟机时候，可以利用虚拟化软件提供的虚拟机复制功能，避免每次安装 OS 系统的痛苦</li>
+<li>复制虚拟机教程<ul>
+<li>点击centos-base选择复制，输入新虚拟机名字，注意必须选择<strong>重新初始化所有网卡的 MAC 地址 </strong></li>
+<li>选择<strong>链接复制</strong></li>
+<li>配置主机名和第二块网卡<ul>
+<li>使用 <code>nmtui</code>修改主机名和第二块网卡IP地址（注意：IP地址不要与原虚拟机或者VirtualBox的虚拟网卡的IP重复）</li>
+</ul>
+</li>
+<li>重启</li>
+<li>如果主机可以ping到该地址则配置成功</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-使用SSH登陆和远程连接登陆虚拟机"><a href="#3-使用SSH登陆和远程连接登陆虚拟机" class="headerlink" title="3. 使用SSH登陆和远程连接登陆虚拟机"></a>3. 使用SSH登陆和远程连接登陆虚拟机</h3><h4 id="1-SSH登陆虚拟机"><a href="#1-SSH登陆虚拟机" class="headerlink" title="1.SSH登陆虚拟机"></a>1.SSH登陆虚拟机</h4><ul>
+<li>centos 自带SSH服务，故无需再次安装或配置</li>
+<li>window并未安装SSH，需要安装git bash（unix 命令行模拟环境），然后即可使用SSH服务</li>
+<li>本地使用命令<code>ssh [用户名]@[ip地址]</code>进行登陆虚拟机</li>
+<li>登陆成功显示<br>  <img src="/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/4.png" alt="这里写图片描述"></li>
+<li>退出ssh连接<ul>
+<li>输入<code>exit</code>然后回车即可退出</li>
+</ul>
+</li>
+<li>登陆失败解决方法<ul>
+<li>多台已启动的虚拟机使用同一ip</li>
+<li>虚拟机网卡配置的ip与virtualbox网卡的ip相同</li>
+<li><a href="https://www.linuxidc.com/Linux/2017-05/143740.htm">更多解决方法</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="2-远程连接登陆虚拟机"><a href="#2-远程连接登陆虚拟机" class="headerlink" title="2. 远程连接登陆虚拟机"></a>2. 远程连接登陆虚拟机</h4><ul>
+<li>增加VirtualBox远程显示扩展<ul>
+<li>安装可以启用VirtualBox远程显示系统的扩展包，<a href="https://www.virtualbox.org/wiki/Downloads">下载Oracle VM VirtualBox Extension Pack</a></li>
+</ul>
+</li>
+<li>在安装扩展包之前，<strong>需要关闭—注意不是挂起—所有运行中的虚拟机</strong>，并关闭整个VirtualBox系统。</li>
+<li>安装扩展包<ul>
+<li>在Windows中，您只需双击扩展包或手动在<code>管理</code>-&gt;<code>全局设定</code>-&gt;<code>扩展</code>中点击Add Package图标(<code>&#39;+&#39;号图标</code>)找到正确的安装包列表。<br><img src="/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/5.png" alt="这里写图片描述"></li>
+<li>如果您是通过命令行操作的，通过VBoxManager extpack命令添加VirtualBox远程显示扩展包。</li>
+</ul>
+</li>
+<li>设置虚拟机端口<ul>
+<li><code>为每台子虚拟机选择端口号。每台虚拟机必须拥有唯一的RDP访问端口</code></li>
+<li>虚拟机设置端口号<ul>
+<li><code>右键虚拟机</code> -&gt; <code>设置</code> -&gt; <code>显示</code> -&gt; <code>远程桌面</code> -&gt;  勾选<code>启用服务器</code> -&gt; 设置一个端口号</li>
+<li>不建议使用默认端口号，避免端口已被占用<br><img src="/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/6.png" alt="这里写图片描述"></li>
+</ul>
+</li>
+<li>win 10远程连接虚拟机<ul>
+<li>打开微软小娜服务查询远程连接直接启动远程连接</li>
+<li>输入<code>主机ip + &#39;:&#39;+ 设定的端口号</code>，例：<code>192.168.100.1:3391</code><br><img src="/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-1-VirtualBox%E6%90%AD%E5%BB%BA%E7%A7%81%E6%9C%89%E4%BA%91/7.png" alt="这里写图片描述"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97/" rel="tag"># 服务计算</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/08/VirtualBox%E5%AE%89%E8%A3%85Centos7%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%95%99%E7%A8%8B/" rel="next" title="VirtualBox安装Centos7虚拟机教程">
+                <i class="fa fa-chevron-left"></i> VirtualBox安装Centos7虚拟机教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/08/%E6%9C%8D%E5%8A%A1%E8%AE%A1%E7%AE%97-2-Go%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="prev" title="服务计算 - 2 Go语言开发环境配置">
+                服务计算 - 2 Go语言开发环境配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+  
+    <div class="comments" id="comments">
+      <div style="text-align:center;">
+        <button class="btn" id="load-livere" onclick="livere.load();">加载评论</button>
+      </div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MTY4MS8xODIyNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Liu-YT" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%81%E6%9C%89%E4%BA%91%E6%A1%8C%E9%9D%A2%E7%9A%84%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">私有云桌面的搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9D%E5%A7%8B%E5%87%86%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">1. 初始准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BACentOS-7-%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.2.</span> <span class="nav-text">2. 创建CentOS 7 虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8SSH%E7%99%BB%E9%99%86%E5%92%8C%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%99%BB%E9%99%86%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.3.</span> <span class="nav-text">3. 使用SSH登陆和远程连接登陆虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-SSH%E7%99%BB%E9%99%86%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.SSH登陆虚拟机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E7%99%BB%E9%99%86%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 远程连接登陆虚拟机</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuyt49</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+    var livere = {
+      load : function() {
+          (function(d, s) {
+          var j, e = d.getElementsByTagName(s)[0];
+          if (typeof LivereTower === 'function') { return; }
+          j = d.createElement(s);
+          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+          j.async = true;
+          e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+        $('#load-livere').remove(); ///加载后移除按钮
+      }
+    }
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
