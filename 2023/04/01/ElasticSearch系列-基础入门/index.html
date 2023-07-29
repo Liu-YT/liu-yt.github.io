@@ -81,18 +81,21 @@
 
 
 
-<meta name="description" content="不知名工地搬砖工">
+<meta name="description" content="介绍Elasticsearch是一个基于Apache Lucene的分布式、高扩展、近实时的搜索引擎，主要用于海量数据快速存储、实时检索、高效分析的场景。它具有以下特点：  分布式存储：可以将海量数据分散存储在多台服务器上。 分布式搜索：可以在分布式存储基础上实现快速搜索。 分布式分析：可以对海量数据进行分布式分析。  安装与配置 系统环境：mac  elasticsearch安装指南：  Ela">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ElasticSearch系列-基础入门">
+<meta property="og:title" content="Elasticsearch系列-基础入门">
 <meta property="og:url" content="http://yoursite.com/2023/04/01/ElasticSearch%E7%B3%BB%E5%88%97-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="不知名工地搬砖工">
+<meta property="og:description" content="介绍Elasticsearch是一个基于Apache Lucene的分布式、高扩展、近实时的搜索引擎，主要用于海量数据快速存储、实时检索、高效分析的场景。它具有以下特点：  分布式存储：可以将海量数据分散存储在多台服务器上。 分布式搜索：可以在分布式存储基础上实现快速搜索。 分布式分析：可以对海量数据进行分布式分析。  安装与配置 系统环境：mac  elasticsearch安装指南：  Ela">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2023/04/01/ElasticSearch%E7%B3%BB%E5%88%97-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/ES%E5%AD%A6%E4%B9%A0/cluster.png">
+<meta property="og:image" content="http://yoursite.com/2023/04/01/ElasticSearch%E7%B3%BB%E5%88%97-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/ES%E5%AD%A6%E4%B9%A0/index.png">
 <meta property="article:published_time" content="2023-04-01T09:53:04.000Z">
-<meta property="article:modified_time" content="2023-05-21T08:27:18.184Z">
+<meta property="article:modified_time" content="2023-07-29T16:34:08.514Z">
 <meta property="article:author" content="liuyt49">
 <meta property="article:tag" content="elasticsearch">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2023/04/01/ElasticSearch%E7%B3%BB%E5%88%97-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/ES%E5%AD%A6%E4%B9%A0/cluster.png">
 
 
 
@@ -128,7 +131,7 @@
 
 
 
-  <title>ElasticSearch系列-基础入门 | </title>
+  <title>Elasticsearch系列-基础入门 | </title>
   
 
 
@@ -282,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ElasticSearch系列-基础入门</h1>
+          <h1 class="post-title" itemprop="name headline">Elasticsearch系列-基础入门</h1>
         
 
         <div class="post-meta">
@@ -331,7 +334,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  1.6k
                 </span>
               
 
@@ -347,7 +350,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  5
                 </span>
               
             </div>
@@ -368,7 +371,113 @@
       
 
       
-        
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Elasticsearch是一个基于<code>Apache Lucene</code>的分布式、高扩展、<strong>近实时</strong>的搜索引擎，主要用于海量数据快速存储、实时检索、高效分析的场景。它具有以下特点：</p>
+<ul>
+<li><strong>分布式存储</strong>：可以将海量数据分散存储在多台服务器上。</li>
+<li><strong>分布式搜索</strong>：可以在分布式存储基础上实现快速搜索。</li>
+<li><strong>分布式分析</strong>：可以对海量数据进行分布式分析。</li>
+</ul>
+<h1 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h1><blockquote>
+<p>系统环境：mac</p>
+</blockquote>
+<h2 id="elasticsearch"><a href="#elasticsearch" class="headerlink" title="elasticsearch"></a>elasticsearch</h2><p>安装指南：</p>
+<ul>
+<li><a href="https://www.elastic.co/cn/downloads/elasticsearch">Elasticsearch安装教程</a>中选择合适版本安装包下载安装即可。</li>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/brew.html">MacOS安装Elasticsearch</a> 基于homebrew安装，但是安装可能出现如下报错：</li>
+</ul>
+<p><code>Error: elastic/tap/metricbeat-full: Calling plist_options is disabled! Use service.require_root instead.</code></p>
+<p>    可参考<a href="https://github.com/elastic/homebrew-tap/issues/150">Github Issue:Error in elasticsearch-full formula</a>中解决。</p>
+<h2 id="kibana"><a href="#kibana" class="headerlink" title="kibana"></a>kibana</h2><p>Kibana是一个基于Web的数据可视化工具，可以用于创建、编辑、共享数据可视化，并提供强大的图表和仪表板功能。Elasticsearch和Kibana一起使用，可以实现对数据的实时搜索、分析和可视化，从而帮助用户更好地理解和解决问题。通常情况下，ES负责数据的存储、搜索和分析，而Kibana则负责将数据以图表的形式呈现给用户，并提供交互式的界面和工具，以便用户更好地理解和探索数据。</p>
+<p>安装指南：</p>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/kibana/7.17/install.html">kibana安装教程</a></li>
+<li><a href="https://www.elastic.co/guide/en/kibana/7.17/brew.html">MacOS安装kibana</a></li>
+</ul>
+<h1 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h1><h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><p>ES基础概念比对常见的关系型数据库MySQL：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>ES</th>
+<th>类比MySQL</th>
+<th>补充说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td>文档型</td>
+<td>关系型</td>
+<td> </td>
+</tr>
+<tr>
+<td>模式</td>
+<td>Mapping</td>
+<td>Schema</td>
+<td> </td>
+</tr>
+<tr>
+<td>库</td>
+<td>Index</td>
+<td>Database</td>
+<td>文档的集合</td>
+</tr>
+<tr>
+<td>表</td>
+<td>Type</td>
+<td>Table</td>
+<td>每个索引（Index）下可以建立多个类型（Type），文档存储时需要指定index和type。从6.0.0开始单个索引中只能有一个类型，7.0.0以后将将不建议使用，8.0.0 以后完全不支持。<br><br>* <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/removal-of-types.html">Removal of mapping types</a></td>
+</tr>
+<tr>
+<td>行</td>
+<td>Document</td>
+<td>Row</td>
+<td> </td>
+</tr>
+<tr>
+<td>列</td>
+<td>Field</td>
+<td>Column</td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>可以通俗的去理解Index比作 SQL 的 Database，Type比作SQL的Table。但这并不准确，因为如果在SQL中，Table 之间相互独立，同名的字段在两个表中毫无关系。但是在ES中，同一个Index 下不同的 Type 如果有同名的字段，他们会被 Luecence 当作同一个字段 ，并且他们的定义必须相同。所以我觉得Index现在更像一个表，</p>
+</blockquote>
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><p>ES集群实际是一个分布式系统，es集群由一个或多个节点（Node）组成，并可通过其集群名称进行标识，其具备<strong>高可用性</strong>与<strong>可拓展性。</strong></p>
+<ul>
+<li>高可用性：<ul>
+<li>服务可用性：允许有节点停止服务；</li>
+<li>数据可用性：部分节点丢失，不会丢失数据；</li>
+</ul>
+</li>
+<li>可扩展性：随着请求量的不断提升，数据量的不断增长，系统可以将数据分布到其他节点，实现水平扩展；</li>
+</ul>
+<blockquote>
+<p>集群健康值：</p>
+<ol>
+<li>Green：所有主要分片和复制分片都可用</li>
+<li>Yellow：所有主要分片可用，但是不是所有复制分片可用</li>
+<li>Red：不是所有的主要分片都可用。此时仍然正常提供服务，它会在现有存活分片中执行请求，我们需要尽快修复故障分片，防止查询数据的丢失</li>
+</ol>
+</blockquote>
+<p><img src="/2023/04/01/ElasticSearch%E7%B3%BB%E5%88%97-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/./ES学习/cluster.png" alt="image"></p>
+<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><p>单个ES实例，即为一个集群中的节点。同时根据node的作用，可以分为如下几种：</p>
+<ul>
+<li>master-eligible：可以作为主节点。一旦成为主节点，可以管理整个cluster的设置及变化，例如创建，更新，删除索引；添加或删除node；为node分配shard，应用的集群设置等。</li>
+<li>data：数据node。数据节点是实际的索引、搜索、删除和其他与文档相关的操作发生的地方。这些节点托管索引文档，一旦收到搜索请求，就会调用</li>
+<li>ingest：数据接入（例如：<a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.4/ingest.html">Pipeline</a>）。ES主要目标是索引、搜索和分析，但是通常在将文档存储到ES之前对其进行修改或增强，相应节点负责支持相应操作。</li>
+<li>coordinating：特殊节点，可以为上面的任何一种节点。协调节点负责端到端的处理客户端请求，在接受请求后，协调器请求集群中的其他节点处理请求，它在收集和整理结果并将它们发送回客户端之前等待响应。</li>
+</ul>
+<h2 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h2><p><img src="/2023/04/01/ElasticSearch%E7%B3%BB%E5%88%97-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/./ES学习/index.png" alt="image"></p>
+<ul>
+<li>主分片（Primary Shard）：每个文档都存储在一个 primary shard。 索引文档时，它首先在 primary shard上编制索引，然后在此分片的所有副本上（replica）编制索引。索引可以包含一个或多个主分片。 此数字确定索引相对于索引数据大小的可伸缩性。 创建索引后，无法更改索引中的主分片数。Primary 可以同时出来读和写操作。一个索引可以由多个主分片组成，每个分片都具有索引（或写入）文档的能力。 当 Elasticsearch 试图在集群中均匀分布分片时，每个主分片都可以利用节点资源来实现写入可扩展性。。当一个文档被索引到 Elasticsearch 中时，它会在被复制到副本分片之前由主分片索引。 只有在成功更新副本分片后才会确认索引请求，从而确保跨 Elasticsearch 集群的读取一致性。</li>
+<li>副本分片（Replica Shard）：每个主分片可以具有零个或多个副本。 replica 是主分片的副本。replica 只能是只读的，不可以进行写入操作。replica 分片可以独立于主分片响应搜索（或读取）请求。 由于主分片和副本分片被分配到不同的节点（为索引提供更多计算资源），因此可以通过添加 replica 来实现读取可扩展性。如果一个索引的 primary shard 一旦被丢失（有宕机或者网络连接问题），那么相应的 replica shard 会被自动提升为新的 primary shard，进而新的 replica 也会在不同的 node 上生成。replica 有两个目的： 增加故障转移：如果主分片故障，可以将副本分片提升为主分片。</li>
+</ul>
+
       
     </div>
     
@@ -465,8 +574,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -547,6 +665,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#elasticsearch"><span class="nav-number">2.1.</span> <span class="nav-text">elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kibana"><span class="nav-number">2.2.</span> <span class="nav-text">kibana</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4"><span class="nav-number">3.2.</span> <span class="nav-text">集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.</span> <span class="nav-text">节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%89%87"><span class="nav-number">3.4.</span> <span class="nav-text">分片</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
